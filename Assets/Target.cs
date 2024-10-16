@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour
+public class Target : MonoBehaviour, IGetHit
 {
 
     public static Action<int> AwardPoints;
@@ -35,6 +35,6 @@ public class Target : MonoBehaviour
         AwardPoints?.Invoke(PointValue);
     }
 
-
+    
 
 }

@@ -21,5 +21,5 @@ public class Bullet : MonoBehaviour
 
 public interface IGetHit
 {
-    public void GetHit();
+    public abstract void GetHit();
 }
