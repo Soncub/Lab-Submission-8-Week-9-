@@ -15,7 +15,7 @@ public class ObjectPool : MonoBehaviour
         pool = new List<GameObject>(defaultPoolSize);
         for (int i = 0; i < defaultPoolSize; i++)
         {
-            pool[i] = Instantiate(sourcePrefab);
+            pool.Add(Instantiate(sourcePrefab));
             pool[i].SetActive(false);
         }
     }
@@ -27,9 +27,10 @@ public class ObjectPool : MonoBehaviour
         {
             pool[nextObject].SetActive(true);
             return pool[nextObject];
-        }
-        while (pool[++nextObject].activeSelf)
+        } 
+        while (pool[nextObject].activeSelf)
         {
+            nextObject++;
             if (nextObject >= pool.Count) nextObject = 0;
             if (nextObject == firstTry) break;
         }
