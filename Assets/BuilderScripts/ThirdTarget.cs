@@ -6,18 +6,24 @@ public class ThirdTarget : TargetBuilder
 {
     public ThirdTarget()
     {
-       // carnivalTarget = new Target("Third Target");
+
+        BoxCollider boxCollider = new BoxCollider()
+        {
+            size = new Vector3(2, 2, 2),
+        };
+
+        //carnivalTarget = new Target();
     }
     public override void AddSize()
     {
-        carnivalTarget["size"] = "";
+        // carnivalTarget. = "";
     }
     public override void AddSpeed()
     {
-        carnivalTarget["speed"] = "";
+        //carnivalTarget["speed"] = "";
     }
     public override void AddPoints()
     {
-        carnivalTarget["points"] = "";
+        carnivalTarget.PointValue = 10;
     }
 }
