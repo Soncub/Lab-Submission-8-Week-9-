@@ -81,7 +81,7 @@ public class TargetLine
 
     public void FixedUpdate(float deltaTime)
     {
-        time += deltaTime;
+        time += deltaTime / count;
 
         for (int i = 0; i < targets.Length; i++)
         {
