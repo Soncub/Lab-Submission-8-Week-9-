@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
 
 
+    public List<GameObject> targetModels;
+
 
     public int CurrentPoints;
     public Timer timer;
