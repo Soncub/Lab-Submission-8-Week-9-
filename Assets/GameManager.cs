@@ -14,12 +14,12 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         Target.AwardPoints += ChangePointTotal;
-       //EventManager.TimerStop += GameEnd;
+       EventManager.TimerStop += GameEnd;
     }
     private void OnDisable()
     {
         Target.AwardPoints -= ChangePointTotal;
-        //EventManager.TimerStop -= GameEnd;
+        EventManager.TimerStop -= GameEnd;
     }
 
     private void Awake()
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         Debug.Log("Game started");
-        //EventManager.OnTimerStart();
+        EventManager.OnTimerStart();
 
     }
 
