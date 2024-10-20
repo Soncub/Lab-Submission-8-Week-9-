@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour, IGetHit
+public class Target : IGetHit
 {
 
     public static Action<int> AwardPoints;
@@ -25,8 +25,9 @@ public class Target : MonoBehaviour, IGetHit
 
     private void Awake()
     {
-        Instantiate(TargetModel);
-        Instantiate(Hitbox);
+        //Instantiate(TargetModel);
+        //var box = AddComponent<BoxCollider>();
+        //box = Hitbox;
     }
 
 

@@ -7,10 +7,7 @@ public class SecondTarget : TargetBuilder
     public SecondTarget()
     {
 
-        BoxCollider boxCollider = new BoxCollider()
-        {
-            size = new Vector3(2, 2, 2),
-        };
+        BoxCollider boxCollider = new();
 
         carnivalTarget = new Target(GameManager.Instance.targetModels[1], boxCollider);
     }

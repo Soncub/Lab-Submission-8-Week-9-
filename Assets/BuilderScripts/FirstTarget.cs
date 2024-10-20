@@ -6,12 +6,7 @@ public class FirstTarget : TargetBuilder
 {
     public FirstTarget()
     {
-       
-       BoxCollider boxCollider = new BoxCollider()
-       {
-           size = new Vector3(2, 2, 2),
-       };
-
+       BoxCollider boxCollider = new BoxCollider(){};
        carnivalTarget = new Target(GameManager.Instance.targetModels[0],boxCollider);
     }
     public override void AddSize()
