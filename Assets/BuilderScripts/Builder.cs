@@ -7,23 +7,18 @@ public class Builder : MonoBehaviour
     void Start()
     {
         TargetBuilder builder;
-        Shop shop = new Shop();
 
         builder = new FirstTarget();
-        shop.Construct(builder);
-        //builder.CarnivalTarget.Show();
+        Construct(builder);
 
         builder = new SecondTarget();
-        shop.Construct(builder);
-        //builder.CarnivalTarget.Show();
+        Construct(builder);
 
         builder = new ThirdTarget();
-        shop.Construct(builder);
-        //builder.CarnivalTarget.Show();
+        Construct(builder);
+
+
     }
-}
-public class Shop
-{
     public void Construct(TargetBuilder targetBuilder)
     {
         targetBuilder.AddSize();

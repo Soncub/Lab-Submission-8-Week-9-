@@ -44,13 +44,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game is over.");
     }
 
-
-
-
-
-
-
-
     public void ChangePointTotal(int points)
     {
         CurrentPoints += points;
