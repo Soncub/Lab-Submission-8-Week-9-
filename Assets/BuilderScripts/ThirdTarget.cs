@@ -9,7 +9,7 @@ public class ThirdTarget : TargetBuilder
 
         BoxCollider boxCollider = new BoxCollider(){};
 
-        carnivalTarget = new Target(GameManager.Instance.targetModels[2], boxCollider);
+        //carnivalTarget = new Target(GameManager.Instance.targetModels[2], boxCollider);
     }
     public override void AddSize()
     {
