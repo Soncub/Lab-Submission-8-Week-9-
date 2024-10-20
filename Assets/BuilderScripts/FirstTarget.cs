@@ -12,7 +12,7 @@ public class FirstTarget : TargetBuilder
            size = new Vector3(2, 2, 2),
        };
 
-       //carnivalTarget = new Target();
+       carnivalTarget = new Target(GameManager.Instance.targetModels[0],boxCollider);
     }
     public override void AddSize()
     {
@@ -20,10 +20,10 @@ public class FirstTarget : TargetBuilder
     }
     public override void AddSpeed()
     {
-        //carnivalTarget["speed"] = "";
+        carnivalTarget.Speed = 1;
     }
     public override void AddPoints()
     {
-        carnivalTarget.PointValue = 10;
+        carnivalTarget.PointValue = 3;
     }
 }
