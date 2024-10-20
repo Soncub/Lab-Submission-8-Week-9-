@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance;
+
+    public static Action UpdateScore;
 
     
 
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         CurrentPoints += points;
         Mathf.Clamp(CurrentPoints, 0, CurrentPoints);
+        UpdateScore?.Invoke();
         
 
     }
