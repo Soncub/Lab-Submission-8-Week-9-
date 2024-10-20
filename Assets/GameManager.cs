@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
 
 
     public int CurrentPoints;
-    public Timer timer;
     private void OnEnable()
     {
         Target.AwardPoints += ChangePointTotal;
@@ -26,15 +25,16 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        GameStart();
+        Instance.GameStart();
 
     }
 
     public void GameStart()
     {
-        Debug.Log("Game started");
+
 
         EventManager.OnTimerStart();
+        Debug.Log("Game started");
 
     }
 

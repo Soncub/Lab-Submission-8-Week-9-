@@ -50,7 +50,7 @@ public class Timer : MonoBehaviour
             return;
         }
 
-        timeToDisplay += timerType == TimerType.Countdown ? -Time.deltaTime : Time.deltaTime;
+        timeToDisplay += timerType == TimerType.Countdown ? - Time.deltaTime : Time.deltaTime;
 
         TimeSpan timeSpan = TimeSpan.FromSeconds(timeToDisplay);
         timerText.text = timeSpan.ToString(@"mm\:ss\:ff");
