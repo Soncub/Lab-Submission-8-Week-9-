@@ -14,6 +14,7 @@ public class TargetBuilder
         target.transform.gameObject.AddComponent<TargetGO>().target = target;
         target.Hitbox = target.transform.gameObject.AddComponent<BoxCollider>();
         target.Hitbox.size = Vector3.one * target.size;
+        target.Hitbox.center = Vector3.zero + Vector3.up * target.Hitbox.size.y/2;
 
         GameObject model = Object.Instantiate(target.TargetModel);
         model.transform.parent = target.transform.transform;
