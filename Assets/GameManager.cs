@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
+    public static GameManager Instance;
 
     public List<GameObject> targetModels;
 
@@ -24,7 +25,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         GameStart();
+
     }
 
     public void GameStart()
