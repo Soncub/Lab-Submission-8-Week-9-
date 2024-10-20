@@ -12,13 +12,15 @@ public class Target : IGetHit
     public int PointValue;
     public GameObject TargetModel;
     public float Speed;
+    public float size;
 
+    public Transform transform;
     public BoxCollider Hitbox;
-    public Target(GameObject targetModel, BoxCollider boxCollider)
-    {
-        TargetModel = targetModel;
-        Hitbox = boxCollider;
-    }
+    //public Target(GameObject targetModel, BoxCollider boxCollider)
+    //{
+    //    TargetModel = targetModel;
+    //    Hitbox = boxCollider;
+    //}
 
 
 
@@ -34,8 +36,15 @@ public class Target : IGetHit
     public void GetHit()
     {
         AwardPoints?.Invoke(PointValue);
+        transform.gameObject.SetActive(false);
     }
 
-    
+    public Target Clone()
+    {
+        Target result = MemberwiseClone() as Target;
 
+        result.transform = null;
+        result.Hitbox = null;
+        return result;
+    }
 }

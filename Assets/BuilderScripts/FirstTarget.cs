@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
 public class FirstTarget : TargetBuilder
 {
     public FirstTarget()
@@ -22,3 +23,5 @@ public class FirstTarget : TargetBuilder
         carnivalTarget.PointValue = 3;
     }
 }
+
+ */
