@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Timers;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,32 +14,31 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         Target.AwardPoints += ChangePointTotal;
+        EventManager.TimerStop += GameEnd;
     }
     private void OnDisable()
     {
         Target.AwardPoints -= ChangePointTotal;
+        EventManager.TimerStop -= GameEnd;
     }
 
     private void Awake()
     {
-        
+        GameStart();
     }
 
     public void GameStart()
     {
-        timer = new Timer(120000)
-        {
-            AutoReset = false,
-            Enabled = true
-        };
+        Debug.Log("Game started");
 
-        timer.Elapsed += GameEnd;
-        timer.Start();
+        EventManager.OnTimerStart();
+
     }
 
-    public void GameEnd(object source, ElapsedEventArgs e)
+    public void GameEnd()
     {
         //Tell the game that it is over :)
+        Debug.Log("Game is over.");
     }
 
 
