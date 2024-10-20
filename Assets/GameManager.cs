@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    public List<GameObject> targetModels;
+    
 
 
     public int CurrentPoints;

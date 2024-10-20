@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IGetHit Hit)) Hit.GetHit();
+        if (other.TryGetComponent(out TargetGO Hit)) Hit.target.GetHit();
         gameObject.SetActive(false);
     }
 }
