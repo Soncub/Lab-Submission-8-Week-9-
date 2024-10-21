@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -43,6 +44,13 @@ public class GameManager : MonoBehaviour
     {
         //Tell the game that it is over :)
         Debug.Log("Game is over.");
+
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
+
     }
 
     public void ChangePointTotal(int points)
