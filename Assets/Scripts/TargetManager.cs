@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class TargetManager : MonoBehaviour
+public class TargetManager : MonoBehaviour, ISaveable
 {
     [SerializeField] List<GameObject> targetModels;
 
@@ -17,6 +17,7 @@ public class TargetManager : MonoBehaviour
     [SerializeField] Vector2 countAndSpeed2;
     [SerializeField] Vector2 countAndSpeed3;
 
+    public string SaveID => throw new System.NotImplementedException();
 
     private void Awake()
     {
@@ -51,6 +52,42 @@ public class TargetManager : MonoBehaviour
         targetSet2.FixedUpdate(Time.fixedDeltaTime);
         targetSet3.FixedUpdate(Time.fixedDeltaTime);
     }
+
+
+
+
+    public void Load(SavedJsonData loading)
+    {
+        targetSet1.time = loading.time1;
+        targetSet2.time = loading.time2;
+        targetSet3.time = loading.time3;
+
+        for (int i = 0; i < targetSet1.targets.Length; i++) targetSet1.targets[i].transform.gameObject.SetActive(loading.active1[i]);
+        for (int i = 0; i < targetSet2.targets.Length; i++) targetSet2.targets[i].transform.gameObject.SetActive(loading.active2[i]);
+        for (int i = 0; i < targetSet3.targets.Length; i++) targetSet3.targets[i].transform.gameObject.SetActive(loading.active3[i]);
+
+    }
+
+    public SavedJsonData Save()
+    {
+        SavedJsonData result = new();
+        result.time1 = targetSet1.time;
+        result.time2 = targetSet2.time;
+        result.time3 = targetSet3.time;
+
+        result.active1 = new bool[targetSet1.count];
+        result.active2 = new bool[targetSet2.count];
+        result.active3 = new bool[targetSet3.count];
+
+        for (int i = 0; i < result.active1.Length; i++) result.active1[i] = targetSet1.targets[i].transform.gameObject.activeSelf;
+        for (int i = 0; i < result.active2.Length; i++) result.active2[i] = targetSet2.targets[i].transform.gameObject.activeSelf;
+        for (int i = 0; i < result.active3.Length; i++) result.active3[i] = targetSet3.targets[i].transform.gameObject.activeSelf;
+
+        return result;
+    }
+
+
+
 }
 
 [System.Serializable]
@@ -61,7 +98,7 @@ public class TargetLine
     Transform start;
     Transform end;
 
-    float time;
+    public float time;
     readonly float travelTime;
 
     public TargetLine(Target[] targets, Transform start, Transform end)
@@ -90,4 +127,23 @@ public class TargetLine
             if(position < 0.001f || position > 0.999f) targets[i].transform.gameObject.SetActive(true);
         }
     }
+}
+
+
+public interface ISaveable
+{
+    string SaveID { get; }
+    public abstract SavedJsonData Save();
+    public abstract void Load(SavedJsonData loading);
+}
+
+[System.Serializable]
+public class SavedJsonData
+{
+    public float time1;
+    public bool[] active1;
+    public float time2;
+    public bool[] active2;
+    public float time3;
+    public bool[] active3;
 }
