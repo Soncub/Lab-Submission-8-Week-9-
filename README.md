@@ -10,3 +10,10 @@ The TargetLines handle the Targets' movement.
 ## Observer
 The Game Manager subscribes to a global Action on the Target class to recieve a points addition whenever a target is hit.
 It also subscribes to the end event of a custom timer.
+
+
+### ISaveable
+ISaveable is a simple generic class with Save() and Load() methods and a type parameter. (Currently attached to TargetManager with type SavedJsonData)
+
+## SaveEnemyPositions
+A MonoBehavior in the scene which listens for "S" and "L" presses and Saves/Loads data between the TargetManager and a Json File.
