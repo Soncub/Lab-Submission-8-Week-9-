@@ -32,15 +32,9 @@ public class PlayerShooter : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("s"))
-        {
-            Debug.Log("Worked");
-        }
+        if (Input.GetKeyDown("s")) FindObjectOfType<SaveEnemyPositions>().Save();
 
-        if (Input.GetKeyDown("l"))
-        {
-            Debug.Log("Worked");
-        }
+        if (Input.GetKeyDown("l")) FindObjectOfType<SaveEnemyPositions>().Load();
 
     }
 }
