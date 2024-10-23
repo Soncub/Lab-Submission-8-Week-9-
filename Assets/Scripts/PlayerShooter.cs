@@ -32,5 +32,15 @@ public class PlayerShooter : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown("s"))
+        {
+            Debug.Log("Worked");
+        }
+
+        if (Input.GetKeyDown("l"))
+        {
+            Debug.Log("Worked");
+        }
+
     }
 }
