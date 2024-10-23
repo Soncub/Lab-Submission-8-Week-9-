@@ -7,34 +7,42 @@ using System.IO;
 
 public class SaveEnemyPositions : MonoBehaviour
 {
-    private ISaveable[] savables;
+    private ISaveable<SavedJsonData> positionSaver;
 
     private void Awake()
     {
-        savables = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>().ToArray();
+        positionSaver = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable<SavedJsonData>>().First();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("s")) SavePositions();
+
+        if (Input.GetKeyDown("l")) LoadPositions();
+
     }
 
     string DataPath() => Application.persistentDataPath + "/Saves";
 
-    public void Save()
+    public void SavePositions()
     {
         if (!Directory.Exists(DataPath())) Directory.CreateDirectory(DataPath());
 
-        SavedJsonData data = savables[0].Save();
+        SavedJsonData data = positionSaver.Save();
         if (data == null) return;
 
         using StreamWriter save = File.CreateText(DataPath() + "/" + "TargetPositions.json");
         save.WriteLine(JsonUtility.ToJson(data, true));
     }
 
-    public void Load()
+    public void LoadPositions()
     {
         if (!Directory.Exists(DataPath())) Directory.CreateDirectory(DataPath());
-        if (!File.Exists(DataPath() + "/TargetPositions.json")) Save();
+        if (!File.Exists(DataPath() + "/TargetPositions.json")) SavePositions();
 
         SavedJsonData data = new();
         using StreamReader load = File.OpenText(DataPath() + "/" + "TargetPositions.json");
         JsonUtility.FromJsonOverwrite(load.ReadToEnd(), data);
-        savables[0].Load(data);
+        positionSaver.Load(data);
     }
 }

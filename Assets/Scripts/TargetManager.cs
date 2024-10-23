@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class TargetManager : MonoBehaviour, ISaveable
+public class TargetManager : MonoBehaviour, ISaveable<SavedJsonData>
 {
     [SerializeField] List<GameObject> targetModels;
 
@@ -130,11 +130,11 @@ public class TargetLine
 }
 
 
-public interface ISaveable
+public interface ISaveable<T>
 {
     string SaveID { get; }
-    public abstract SavedJsonData Save();
-    public abstract void Load(SavedJsonData loading);
+    public abstract T Save();
+    public abstract void Load(T loading);
 }
 
 [System.Serializable]
