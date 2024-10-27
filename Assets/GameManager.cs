@@ -37,8 +37,8 @@ public class GameManager : MonoBehaviour
         gameData = GameData.LoadData(DataPath()+"/Score.byte");
         if(gameData == null)
         {
-
-            gameData.SaveData(DataPath()+"/Score");
+            gameData = new GameData(0);
+            gameData.SaveData(DataPath(), "/Score.byte");
         }
 
         CurrentPoints = gameData.playerData.playerScore;
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         CurrentPoints += points;
         Mathf.Clamp(CurrentPoints, 0, CurrentPoints);
         GameData data = new GameData(CurrentPoints);
-        data.SaveData(DataPath()+"/Score");
+        data.SaveData(DataPath(), "/Score.byte");
         UpdateScore?.Invoke();
         
 

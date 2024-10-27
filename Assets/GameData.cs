@@ -13,11 +13,11 @@ public class GameData
     {
         playerData = new PlayerData(score);
     }
-    public void SaveData(string path)
+    public void SaveData(string path, string filename)
     {
+        if(!Directory.Exists(path)) Directory.CreateDirectory(path);
 
-
-        FileStream file = File.Create(path+".byte");
+        FileStream file = File.Create(path+filename);
         Debug.Log("Score file saved.");
         BinaryFormatter formatter = new BinaryFormatter();
         formatter.Serialize(file, this);
@@ -26,7 +26,7 @@ public class GameData
 
     public static GameData LoadData(string path)
     {
-
+        if (!Directory.Exists(path)) return null;
 
         FileStream file = File.Open(path, FileMode.Open);
         BinaryFormatter formatter = new BinaryFormatter();
