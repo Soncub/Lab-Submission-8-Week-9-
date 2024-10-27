@@ -11,13 +11,15 @@ public class GameManager : MonoBehaviour
 
     public static Action UpdateScore;
 
+    GameData gameData;
+
     
 
 
     public int CurrentPoints;
     private void OnEnable()
     {
-        Target.AwardPoints += ChangePointTotal;
+    Target.AwardPoints += ChangePointTotal;
        EventManager.TimerStop += GameEnd;
     }
     private void OnDisable()
@@ -26,14 +28,22 @@ public class GameManager : MonoBehaviour
         EventManager.TimerStop -= GameEnd;
     }
 
+    string DataPath() => Application.persistentDataPath + "/Scores";
+
     private void Awake()
     {
         Instance = this;
-        GameStart();
+
+        gameData = GameData.LoadData(DataPath()+"/Score");
+        if(gameData == null)
+        {
+
+            gameData.SaveData(DataPath()+"/Score");
+        }
 
     }
 
-    public void GameStart()
+    public void Start()
     {
         Debug.Log("Game started");
         EventManager.OnTimerStart();
@@ -57,6 +67,7 @@ public class GameManager : MonoBehaviour
     {
         CurrentPoints += points;
         Mathf.Clamp(CurrentPoints, 0, CurrentPoints);
+        gameData.SaveData(DataPath()+"/Score");
         UpdateScore?.Invoke();
         
 
