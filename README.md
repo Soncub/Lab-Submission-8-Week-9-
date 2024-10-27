@@ -17,3 +17,6 @@ ISaveable is a simple generic class with Save() and Load() methods and a type pa
 
 ## SaveEnemyPositions
 A MonoBehavior in the scene which listens for "S" and "L" presses and Saves/Loads data between the TargetManager and a Json File.
+
+## ScoreSaver
+A PlayerData stores the integer value of the player's score. GameData is responsible for saving and loading the data from a given BYTE file. The score is called to be saved every time the score is updated, so it is in sync with the actions of the player. Follows a standard practice for BinaryFormatting.
