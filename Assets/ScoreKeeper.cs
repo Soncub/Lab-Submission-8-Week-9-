@@ -11,6 +11,11 @@ public class ScoreKeeper : MonoBehaviour
     private void Awake()
     {
         scoreText = GetComponent<TMP_Text>();
+
+    }
+    void Start()
+    {
+        UpdateScoreText();
     }
 
     void OnEnable()

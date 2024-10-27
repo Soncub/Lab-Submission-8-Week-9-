@@ -18,6 +18,7 @@ public class GameData
 
 
         FileStream file = File.Create(path+".byte");
+        Debug.Log("Score file saved.");
         BinaryFormatter formatter = new BinaryFormatter();
         formatter.Serialize(file, this);
         file.Close();
@@ -27,7 +28,7 @@ public class GameData
     {
 
 
-        FileStream file = File.Open(path+".byte", FileMode.Open);
+        FileStream file = File.Open(path, FileMode.Open);
         BinaryFormatter formatter = new BinaryFormatter();
         GameData data = (GameData)formatter.Deserialize(file);
         file.Close();

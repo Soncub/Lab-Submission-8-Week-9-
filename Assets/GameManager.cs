@@ -34,12 +34,15 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
 
-        gameData = GameData.LoadData(DataPath()+"/Score");
+        gameData = GameData.LoadData(DataPath()+"/Score.byte");
         if(gameData == null)
         {
 
             gameData.SaveData(DataPath()+"/Score");
         }
+
+        CurrentPoints = gameData.playerData.playerScore;
+        
 
     }
 
@@ -67,7 +70,8 @@ public class GameManager : MonoBehaviour
     {
         CurrentPoints += points;
         Mathf.Clamp(CurrentPoints, 0, CurrentPoints);
-        gameData.SaveData(DataPath()+"/Score");
+        GameData data = new GameData(CurrentPoints);
+        data.SaveData(DataPath()+"/Score");
         UpdateScore?.Invoke();
         
 

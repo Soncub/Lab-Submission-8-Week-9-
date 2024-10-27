@@ -16,9 +16,9 @@ public class SaveEnemyPositions : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("s")) SavePositions();
+        if (Input.GetKeyDown(KeyCode.S)) SavePositions();
 
-        if (Input.GetKeyDown("l")) LoadPositions();
+        if (Input.GetKeyDown(KeyCode.L)) LoadPositions();
 
     }
 
